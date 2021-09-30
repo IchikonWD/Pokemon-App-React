@@ -68,33 +68,6 @@
   }
 }
 
-.pokeball.open {
-  background-color: $background-white;
-  transition: all 0.5s ease-in;
-}
-
-.pokeball.open button {
-  top: 10%;
-  box-shadow: inset 0px -3px 0px 0px #bdbdbd,
-    inset 0px -4px 0px 0px $pokeball-black, 0px 0px 0px 10px $pokeball-grey,
-    0px 0px 0px 10px $pokeball-grey, 0px 0px 0px 24px $pokeball-black,
-    0px 5px 0px 24px rgba(0, 0, 0, 0.1);
-  transition-delay: 0s;
-  &:active {
-    outline: 0;
-    box-shadow: inset 0px 3px 0px 0px #bdbdbd,
-      inset 0px 4px 0px 0px $pokeball-black, 0px 0px 0px 10px $pokeball-grey,
-      0px 0px 0px 10px $pokeball-grey, 0px 0px 0px 24px $pokeball-black,
-      0px 5px 0px 24px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.pokeball.open::before {
-  top: -40%;
-  box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.1);
-  transition-delay: 0s;
-}
-
 .pokeball::after {
   content: "";
   width: 100%;
@@ -111,12 +84,6 @@
   background-repeat: no-repeat;
   transition: all 1s;
   transition-delay: 0.3s;
-}
-
-.pokeball.open::after {
-  top: 90%;
-  box-shadow: 0px -5px 0px 0px rgba(0, 0, 0, 0.1);
-  transition-delay: 0s;
 }
 
 .pokeball button svg {
@@ -210,8 +177,35 @@
   }
 }
 
-@media only screen and (max-width: 475px) {
-  body {
-    transform: scale(0.7);
+.pokeball.open {
+  background-color: $background-white;
+  transition: all 0.5s ease-in;
+}
+
+.pokeball.open button {
+  top: 10%;
+  box-shadow: inset 0px -3px 0px 0px #bdbdbd,
+    inset 0px -4px 0px 0px $pokeball-black, 0px 0px 0px 10px $pokeball-grey,
+    0px 0px 0px 10px $pokeball-grey, 0px 0px 0px 24px $pokeball-black,
+    0px 5px 0px 24px rgba(0, 0, 0, 0.1);
+  transition-delay: 0s;
+  &:active {
+    outline: 0;
+    box-shadow: inset 0px 3px 0px 0px #bdbdbd,
+      inset 0px 4px 0px 0px $pokeball-black, 0px 0px 0px 10px $pokeball-grey,
+      0px 0px 0px 10px $pokeball-grey, 0px 0px 0px 24px $pokeball-black,
+      0px 5px 0px 24px rgba(0, 0, 0, 0.1);
   }
+}
+
+.pokeball.open::before {
+  top: -40%;
+  box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.1);
+  transition-delay: 0s;
+}
+
+.pokeball.open::after {
+  top: 90%;
+  box-shadow: 0px -5px 0px 0px rgba(0, 0, 0, 0.1);
+  transition-delay: 0s;
 }

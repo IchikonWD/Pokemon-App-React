@@ -4,8 +4,7 @@ import Card from "../Card";
 
 export default function Home() {
   return (
-    <div>
-      Home
+    <div className='home'>
       <Form />
       <Card />
     </div>
