@@ -10,12 +10,13 @@
 }
 .pokeball {
   min-width: 300px;
-  width: 300px;
+  width: 350px;
   height: 500px;
   border: 1px solid black;
   position: relative;
-  border-radius: 20px;
+  border-radius: 50px;
   overflow: hidden;
+  text-transform: capitalize;
   display: flex;
   align-items: center;
   background-color: grey;
@@ -66,6 +67,9 @@
       outline: 0;
     }
   }
+  &__img {
+    width: 30%;
+  }
 }
 
 .pokeball::after {
@@ -115,6 +119,7 @@
 
 .pokeball p {
   margin: 20px 0;
+  text-transform: none;
 }
 
 .pokeball ul {
@@ -208,4 +213,24 @@
   top: 90%;
   box-shadow: 0px -5px 0px 0px rgba(0, 0, 0, 0.1);
   transition-delay: 0s;
+}
+
+.shaking {
+  -webkit-animation: shake 0.5s infinite alternate;
+  animation: shake 0.5s infinite alternate;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(3deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

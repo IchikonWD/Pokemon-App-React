@@ -1,11 +1,18 @@
+import React, { useState, useEffect } from "react";
+import Pokeball from "../Pokeball";
 
-import React from 'react'
-import Pokeball from '../Pokeball'
+export default function Card(props) {
+  const [data, setData] = useState("");
 
-export default function Card() {
+  useEffect(() => {
+    if (props.value) {
+      setData(props.value);
+    }
+  }, [props.value]);
+
   return (
-    <div className='card'>
-      <Pokeball />
+    <div className="card">
+      <Pokeball value={data} />
     </div>
-  )
+  );
 }
