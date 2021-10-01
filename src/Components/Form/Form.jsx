@@ -15,6 +15,7 @@ export default function Form({ childToParent }) {
         const result = response.data;
         setPokemons(result);
         childToParent(result);
+        setText("");
       } else {
         setPokemons("");
       }
@@ -22,14 +23,18 @@ export default function Form({ childToParent }) {
     fetchData();
   }, [value]);
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    setText(e.target.value);
+  };
+
   return (
     <div className="wrap">
       <div className="search">
         <input
-          defaultValue={""}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
+          id="input"
+          value={text}
+          onChange={handleChange}
           type="text"
           className="searchTerm"
           placeholder="Find your Pokemon!"

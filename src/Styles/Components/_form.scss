@@ -8,7 +8,7 @@
 
 .searchTerm {
   width: 100%;
-  border: 0.3rem solid $primary;
+  border: 0.3rem solid $pokeball-red;
   border-right: none;
   padding: 0.5rem;
   height: 2rem;
@@ -18,14 +18,14 @@
 }
 
 .searchTerm:focus {
-  color: $primary;
+  color: $pokeball-red;
 }
 
 .searchButton {
   width: 4rem;
   height: 3.6rem;
-  border: 1px solid $primary;
-  background: $primary;
+  border: 1px solid $pokeball-red;
+  background: $pokeball-red;
   text-align: center;
   color: #fff;
   border-radius: 0 1rem 1rem 0;
