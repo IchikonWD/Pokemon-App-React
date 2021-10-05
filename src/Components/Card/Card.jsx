@@ -5,10 +5,14 @@ export default function Card(props) {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    if (props.value) {
-      setData(props.value);
+    if (props.pokemon) {
+      setData(props.pokemon);
     }
-  }, [props.value]);
+  }, [props.pokemon]);
+
+// Paint each card with the data saved from searchs
+
+
 
   return (
     <div className="card">

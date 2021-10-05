@@ -18,6 +18,7 @@ export default function Form({ childToParent }) {
         setText("");
       } else {
         setPokemons("");
+        console.log(pokemons);
       }
     }
     fetchData();
@@ -39,7 +40,7 @@ export default function Form({ childToParent }) {
           className="searchTerm"
           placeholder="Find your Pokemon!"
         ></input>
-        <button type="submit" className="searchButton">
+        <button className="searchButton">
           <i className="fa fa-search"></i>
         </button>
       </div>
