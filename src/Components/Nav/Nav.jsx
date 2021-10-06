@@ -7,7 +7,6 @@ const Nav = () => {
       <Link to="/">Home</Link>
       <Link to="/new">Add Pokemon</Link>
       <Link to="/search">Finder</Link>
-      <Link to="mailto:info@ichicodes.com">Contact</Link>
     </div>
   );
 };
