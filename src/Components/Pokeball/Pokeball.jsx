@@ -14,7 +14,7 @@ export default function Pokeball(props) {
       if (pokemonName !== "") {
         const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`;
         const response = await axios.get(url);
-        const result = response.data;
+        const result = await response.data;
         setPokemonSpecies(result);
       }
     }
@@ -43,8 +43,6 @@ export default function Pokeball(props) {
   const theme = state;
   const themeShake = isShaking;
 
-  // ?name=${props.value.name}&image=${props.value.sprites.front_default}&typeOne=${props.value.types[0].type.name} String de prueba
-
   return pokemonName !== "" ? (
     <div id="pokeball-1" className={`pokeball ${theme} ${themeShake}`}>
       <button id="toggle-button" onClick={togglePokeball}></button>
@@ -59,7 +57,9 @@ export default function Pokeball(props) {
           <span>Pokedex: #{props.value.id}</span>
         </h1>
         <div className="species">Type: {props.value.types[0].type.name}</div>
-        <p>{pokemonFlavour}</p>
+        
+
+         <p>{pokemonFlavour}</p>
         <ul>
           <li>
             <label>
