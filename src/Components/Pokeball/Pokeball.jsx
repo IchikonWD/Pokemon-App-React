@@ -4,18 +4,8 @@ import axios from "axios";
 export default function Pokeball(props) {
   const [state, setState] = useState("");
   const [isShaking, setIsShaking] = useState("shaking");
-  const [pokemon, setPokemon] = useState("");
   const [pokemonSpecies, setPokemonSpecies] = useState("");
   const [pokemonName, setPokemonName] = useState("");
-  const [pokemonImage, setPokemonImage] = useState("");
-  const [pokemonType, setPokemonType] = useState("");
-  const [pokemonHp, setPokemonHp] = useState("");
-  const [pokemonAttack, setPokemonAttack] = useState("");
-  const [pokemonDefense, setPokemonDefense] = useState("");
-  const [pokemonSpeed, setPokemonSpeed] = useState("");
-  const [pokemonSpAttack, setPokeSpAttack] = useState("");
-  const [pokemonSpDefense, setPokeSpDefense] = useState("");
-  const [pokemonId, setPokemonId] = useState("");
   const [pokemonFlavour, setPokemonFlavour] = useState("");
 
   useEffect(() => {
@@ -39,17 +29,7 @@ export default function Pokeball(props) {
 
   useEffect(() => {
     if (props.value) {
-      setPokemon(props.value);
       setPokemonName(props.value.name);
-      setPokemonImage(props.value.sprites.front_default);
-      setPokemonType(props.value.types[0].type.name);
-      setPokemonHp(props.value.stats[0].base_stat);
-      setPokemonAttack(props.value.stats[1].base_stat);
-      setPokemonDefense(props.value.stats[2].base_stat);
-      setPokemonSpeed(props.value.stats[3].base_stat);
-      setPokeSpAttack(props.value.stats[4].base_stat);
-      setPokeSpDefense(props.value.stats[5].base_stat);
-      setPokemonId(props.value.id);
     }
   }, [props.value]);
 
@@ -66,18 +46,22 @@ export default function Pokeball(props) {
     <div id="pokeball-1" className={`pokeball ${theme} ${themeShake}`}>
       <button id="toggle-button" onClick={togglePokeball}></button>
       <article>
-        <img className="pokeball__img" src={pokemonImage} alt={pokemonName} />
+        <img
+          className="pokeball__img"
+          src={props.value.sprites.front_default}
+          alt={props.value.name}
+        />
         <h1>
-          <span>{pokemonName}</span>
-          <span>Pokedex: #{pokemonId}</span>
+          <span>{props.value.name}</span>
+          <span>Pokedex: #{props.value.id}</span>
         </h1>
-        <div className="species">{pokemonType}</div>
+        <div className="species">Type: {props.value.types[0].type.name}</div>
         <p>{pokemonFlavour}</p>
         <ul>
           <li>
             <label>
               <span>HP</span>
-              <span>{pokemonHp}</span>
+              <span>{props.value.stats[0].base_stat}</span>
             </label>
             <meter
               min="10"
@@ -85,13 +69,13 @@ export default function Pokeball(props) {
               high="95"
               optimum="150"
               max="255"
-              value={pokemonHp}
+              value={props.value.stats[0].base_stat}
             ></meter>
           </li>
           <li>
             <label>
               <span>Speed</span>
-              <span>{pokemonSpeed}</span>
+              <span>{props.value.stats[3].base_stat}</span>
             </label>
             <meter
               min="5"
@@ -99,13 +83,13 @@ export default function Pokeball(props) {
               high="50"
               optimum="100"
               max="180"
-              value={pokemonSpeed}
+              value={props.value.stats[3].base_stat}
             ></meter>
           </li>
           <li>
             <label>
               <span>Attack</span>
-              <span>{pokemonAttack}</span>
+              <span>{props.value.stats[1].base_stat}</span>
             </label>
             <meter
               min="5"
@@ -113,13 +97,13 @@ export default function Pokeball(props) {
               high="45"
               optimum="90"
               max="190"
-              value={pokemonAttack}
+              value={props.value.stats[1].base_stat}
             ></meter>
           </li>
           <li>
             <label>
               <span>Defense</span>
-              <span>{pokemonDefense}</span>
+              <span>{props.value.stats[2].base_stat}</span>
             </label>
             <meter
               min="5"
@@ -127,13 +111,13 @@ export default function Pokeball(props) {
               high="55"
               optimum="110"
               max="230"
-              value={pokemonDefense}
+              value={props.value.stats[2].base_stat}
             ></meter>
           </li>
           <li>
             <label>
               <span>Sp. Atk</span>
-              <span>{pokemonSpAttack}</span>
+              <span>{props.value.stats[4].base_stat}</span>
             </label>
             <meter
               min="10"
@@ -141,13 +125,13 @@ export default function Pokeball(props) {
               high="90"
               optimum="130"
               max="173"
-              value={pokemonSpAttack}
+              value={props.value.stats[4].base_stat}
             ></meter>
           </li>
           <li>
             <label>
               <span>Sp. Def:</span>
-              <span>{pokemonSpDefense}</span>
+              <span>{props.value.stats[5].base_stat}</span>
             </label>
             <meter
               min="20"
@@ -155,7 +139,7 @@ export default function Pokeball(props) {
               high="100"
               optimum="150"
               max="230"
-              value={pokemonSpDefense}
+              value={props.value.stats[5].base_stat}
             ></meter>
           </li>
         </ul>
