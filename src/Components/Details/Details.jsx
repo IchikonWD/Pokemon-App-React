@@ -13,28 +13,26 @@ const Details = () => {
 
   useEffect(() => {
     async function fetchData() {
-      if (id !== "") {
-        await axios
-          .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-          .then((res) => {
-            setDetails(res.data);
-            history.push({
-              pathname: window.location.pathname,
-              search: `?name=${res.data.name}&image=${res.data.sprites.front_default}&typeOne=${res.data.types[0].type.name}`,
-            });
-          })
-          .catch((err) => {
-            console.log(err);
+      await axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        .then((res) => {
+          setDetails(res.data);
+          history.push({
+            pathname: window.location.pathname,
+            search: `?name=${res.data.name}&image=${res.data.sprites.front_default}&typeOne=${res.data.types[0].type.name}`,
           });
-        await axios
-          .get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
-          .then((res) => {
-            setDetails2(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      await axios
+        .get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
+        .then((res) => {
+          setDetails2(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
     fetchData();
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -54,7 +52,7 @@ const Details = () => {
         </h1>
         <div className="species">
           Type: {details.types[0].type.name}{" "}
-          {details.types > 1 ? "" : <span>/ {details.types[1].type.name}</span>}
+          {details.types.length > 1 ? <span>/ {details.types[1].type.name}</span> : null }
         </div>
         {details2 !== "" ? (
           <p>{details2.flavor_text_entries[9].flavor_text}</p>

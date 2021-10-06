@@ -56,7 +56,7 @@ export default function Pokeball(props) {
           <span><Link to={`/pokemon/${props.value.id}`}>{props.value.name}</Link></span>
           <span>Pokedex: #{props.value.id}</span>
         </h1>
-        <div className="species">Type: {props.value.types[0].type.name}</div>
+        <div className="species">Type: {props.value.types[0].type.name}  {props.value.types.length > 1 ? <span>/ {props.value.types[1].type.name}</span> : null }</div>
         
 
          <p>{pokemonFlavour}</p>
