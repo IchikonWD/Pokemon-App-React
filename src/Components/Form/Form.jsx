@@ -2,27 +2,33 @@ import React, { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import axios from "axios";
 
-export default function Form({ childToParent }) {
-  const [pokemons, setPokemons] = useState("");
+export default function Form({childToParent}) {
+  const [pokemons, setPokemons] = useState([]);
   const [text, setText] = useState("");
-  const [value] = useDebounce(text, 2000);
+  const [debounced] = useDebounce(text, 2000);
+  const [busqueda, setBusqueda] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      if (value !== "") {
-        const url = `https://pokeapi.co/api/v2/pokemon/${value}`;
-        const response = await axios.get(url);
-        const result = response.data;
-        setPokemons(result);
-        childToParent(result);
-        setText("");
-      } else {
-        setPokemons("");
-        console.log(pokemons);
+  useEffect(async () => {
+    try {
+      if (debounced !== "") {
+        setBusqueda([...busqueda, debounced]);
+        let exist = busqueda.includes(debounced);
+
+        const url = `https://pokeapi.co/api/v2/pokemon/${debounced}`;
+        if (exist === false) {
+          const res = await axios.get(url);
+          setPokemons([...pokemons, res.data]);
+          childToParent([...pokemons, res.data]);
+          setText("");
+        } else {
+          setText("");
+          console.log("Pokemon Already Found");
+        }
       }
+    } catch (err) {
+      console.log(`Axios Error:${err}`);
     }
-    fetchData();
-  }, [value]);
+  }, [debounced]);
 
   const handleChange = (e) => {
     e.preventDefault();
