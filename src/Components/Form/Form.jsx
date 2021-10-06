@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDebounce } from "use-debounce";
 import axios from "axios";
 
-export default function Form({childToParent}) {
-  const [pokemons, setPokemons] = useState([]);
+import { PokemonContext } from "../../Contexts/pokemonContext";
+
+export default function Form() {
+  const { pokemon, setPokemon } = useContext(PokemonContext);
   const [text, setText] = useState("");
   const [debounced] = useDebounce(text, 2000);
   const [busqueda, setBusqueda] = useState([]);
 
-  useEffect(async () => {
-    try {
+  useEffect(() => {
+    async function fetchData() {
       if (debounced !== "") {
         setBusqueda([...busqueda, debounced]);
         let exist = busqueda.includes(debounced);
-
-        const url = `https://pokeapi.co/api/v2/pokemon/${debounced}`;
-        if (exist === false) {
-          const res = await axios.get(url);
-          setPokemons([...pokemons, res.data]);
-          childToParent([...pokemons, res.data]);
-          setText("");
-        } else {
-          setText("");
-          console.log("Pokemon Already Found");
+        try {
+          const url = `https://pokeapi.co/api/v2/pokemon/${debounced}`;
+          if (exist === false) {
+            const res = await axios.get(url);
+            setPokemon([...pokemon, res.data]);
+            setText("");
+            console.log(`${debounced} was found!`);
+          } else {
+            setText("");
+            console.log("Pokemon Already Found");
+          }
+        } catch (err) {
+          console.log(`Axios Error:${err}`);
         }
       }
-    } catch (err) {
-      console.log(`Axios Error:${err}`);
     }
-  }, [debounced]);
+    fetchData();
+  }, [debounced]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleChange = (e) => {
     e.preventDefault();

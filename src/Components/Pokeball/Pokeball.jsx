@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Pokeball(props) {
   const [state, setState] = useState("");
@@ -52,7 +53,7 @@ export default function Pokeball(props) {
           alt={props.value.name}
         />
         <h1>
-          <span>{props.value.name}</span>
+          <span><Link to={`/pokemon/${props.value.id}`}>{props.value.name}</Link></span>
           <span>Pokedex: #{props.value.id}</span>
         </h1>
         <div className="species">Type: {props.value.types[0].type.name}</div>
