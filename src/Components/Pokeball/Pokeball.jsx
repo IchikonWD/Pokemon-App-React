@@ -43,6 +43,8 @@ export default function Pokeball(props) {
   const theme = state;
   const themeShake = isShaking;
 
+  // ?name=${props.value.name}&image=${props.value.sprites.front_default}&typeOne=${props.value.types[0].type.name} String de prueba
+
   return pokemonName !== "" ? (
     <div id="pokeball-1" className={`pokeball ${theme} ${themeShake}`}>
       <button id="toggle-button" onClick={togglePokeball}></button>
