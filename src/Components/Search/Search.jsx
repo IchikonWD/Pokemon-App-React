@@ -1,12 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "../Card";
 import { PokemonContext } from "../../Contexts/pokemonContext";
-
 const Search = () => {
-  const { pokemon } = useContext(PokemonContext);
+  const { pokemon, setPokemon } = useContext(PokemonContext);
 
   const saveContext = () => {
     localStorage.setItem("pokemonContext", JSON.stringify(pokemon));
+  };
+
+  useEffect(() => {
+    const context = JSON.parse(localStorage.getItem("pokemonContext"));
+    if (context) {
+      setPokemon(context);
+    }
+  }, []);
+
+  // Delete local storage saved data
+  const deleteContext = () => {
+    localStorage.removeItem("pokemonContext");
   };
 
   return (
@@ -28,6 +39,11 @@ const Search = () => {
           <span>Save your pokemons for later &nbsp;</span>
           <button onClick={saveContext}>
             <i className="fa fa-save icon"></i>
+          </button>
+          <br />
+          <span>Delete saved pokemons &nbsp;</span>
+          <button onClick={deleteContext}>
+            <i className="fa fa-trash icon"></i>
           </button>
         </div>
       ) : null}
