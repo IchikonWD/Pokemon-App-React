@@ -36,7 +36,7 @@ const Header = () => {
         <Link to="/new" onClick={toggleNav}>
           Add Pokemon
         </Link>
-        <Link to="/search" onClick={toggleNav}>
+        <Link to="/pokepc" onClick={toggleNav}>
         PokePC
         </Link>
       </div>

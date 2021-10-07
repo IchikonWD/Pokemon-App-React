@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { PokemonContext } from "./Contexts/pokemonContext";
 import Main from "./Components/Main";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 import "./Styles/styles.scss";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Header />
           <Main />
         </PokemonContext.Provider>
+        <Footer />
       </BrowserRouter>
     </div>
   );

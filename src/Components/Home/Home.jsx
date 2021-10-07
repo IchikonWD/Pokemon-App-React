@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import Form from "../Form";
 import Card from "../Card";
 import { PokemonContext } from "../../Contexts/pokemonContext";
@@ -26,6 +27,14 @@ const Home = () => {
           <Card key={pokemon.name} pokemon={pokemon} />
         ))}
       </div>
+      {pokemon.length > 0 ? (
+        <div className="text__bottom">
+          <span>Take a look at all your Pokemons: &nbsp;</span>
+          <Link to="/search">
+            <i className="fa fa-desktop icon"></i>
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 };

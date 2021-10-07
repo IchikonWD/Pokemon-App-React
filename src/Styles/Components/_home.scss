@@ -20,8 +20,18 @@
       align-items: center;
       font-size: 1.5rem;
     }
-    &__bottom{
+    &__bottom {
       font-size: 1.3rem;
     }
   }
+}
+.text__bottom{
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  font-size: 1.3rem; 
+}
+.icon {
+  color: #fd5365;
+  text-decoration: none;
+  font-size: 2rem;
 }
