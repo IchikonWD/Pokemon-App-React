@@ -1,0 +1,48 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    &__top {
+      display: flex;
+      font-size: 1.5rem;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+    }
+    &__bottom {
+      font-size: 1.3rem;
+    }
+  }
+}
+.text__bottom{
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  font-size: 1.3rem; 
+}
+
+.text__bottom button {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.icon {
+  color: #fd5365;
+  text-decoration: none;
+  font-size: 2rem;
+}

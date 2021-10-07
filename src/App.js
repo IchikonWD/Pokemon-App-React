@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { PokemonContext } from "./Contexts/pokemonContext";
+import Main from "./Components/Main";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import "./Styles/styles.scss";
 
 function App() {
+  const [pokemon, setPokemon] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <PokemonContext.Provider value={{ pokemon, setPokemon }}>
+          <Header />
+          <Main />
+        </PokemonContext.Provider>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
