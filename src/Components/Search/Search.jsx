@@ -13,7 +13,7 @@ const Search = () => {
     if (context) {
       setPokemon(context);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Delete local storage saved data
   const deleteContext = () => {
@@ -40,7 +40,10 @@ const Search = () => {
           <button onClick={saveContext}>
             <i className="fa fa-save icon"></i>
           </button>
-          <br />
+        </div>
+      ) : null}
+      {pokemon.length > 0 ? (
+        <div className="text__bottom">
           <span>Delete saved pokemons &nbsp;</span>
           <button onClick={deleteContext}>
             <i className="fa fa-trash icon"></i>
