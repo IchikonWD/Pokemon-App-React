@@ -6,8 +6,15 @@
   height: 15px;
   font-size: 1.3rem;
   position: fixed;
-
   bottom: 0;
   left: 0;
   right: 0;
+}
+.ichicodes {
+  color: white;
+  font-size: 1.3rem;
+  text-decoration: none;
+  &:hover {
+    color: #fd5365;
+  }
 }
