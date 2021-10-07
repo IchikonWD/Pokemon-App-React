@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-
 import { PokemonContext } from "../../Contexts/pokemonContext";
+import Swal from "sweetalert2";
 
 const New = () => {
   const {
@@ -25,7 +25,7 @@ const New = () => {
           },
         },
       ],
-      id: data.id,
+      //TODO asignar contador para id automatica id: data.id,
       name: data.name,
       sprites: {
         front_default: data.image,
@@ -44,6 +44,7 @@ const New = () => {
       ],
     };
     setPokemon([...pokemon, newData]);
+    Swal.fire("Nice!", `${newData.name} was created!`, "success");
   };
   return (
     <section className="formContainer">
@@ -51,22 +52,17 @@ const New = () => {
       <form className="addPokemon_form" onSubmit={handleSubmit(onSubmit)}>
         {/* Add (or register) your input to the hook with "register" function to be validated on submit */}
         <label className="labels">
-          ID:
-          <input {...register("id", { required: true, minLength: 4 })} />
-          {errors.id && "This field is required"}
-        </label>
-        <label className="labels">
           Name:
           <input {...register("name", { required: true, minLength: 3 })} />
           {errors.name && "This field is required"}
         </label>
         <label className="labels">
-          Image:
-          <input {...register("image", { required: true, minLength: 3 })} />
-          {errors.image && "This field is required"}
+          Image Url:
+          <input {...register("url", { required: true, minLength: 3 })} />
+          {errors.url && "This field is required"}
         </label>
         <label className="labels">
-          Type one:
+          First Type:
           <select {...register("typeOne", { required: true })}>
             <option value="normal">Normal</option>
             <option value="fire">Fire</option>
@@ -90,7 +86,7 @@ const New = () => {
           </select>
         </label>
         <label className="labels">
-          Type two:
+          Second Type:
           <select {...register("typeTwo")}>
             <option value="normal">Normal</option>
             <option value="fire">Fire</option>
@@ -113,18 +109,34 @@ const New = () => {
           </select>
         </label>
         <label className="labels">
-          Ability one:
-          <input
-            {...register("abilityOne", { required: true, minLength: 3 })}
-          />
-          {errors.abilityOne && "This field is required"}
+          Attack:
+          <input {...register("Attack", { required: true, minLength: 3 })} />
+          {errors.Attack && "This field is required"}
         </label>
         <label className="labels">
-          Ability two:
-          <input
-            {...register("abilityTwo", { required: true, minLength: 3 })}
-          />
-          {errors.abilityTwo && "This field is required"}
+          Defense:
+          <input {...register("Defense", { required: true, minLength: 3 })} />
+          {errors.Defense && "This field is required"}
+        </label>
+        <label className="labels">
+          Speed:
+          <input {...register("Speed", { required: true, minLength: 3 })} />
+          {errors.Speed && "This field is required"}
+        </label>
+        <label className="labels">
+          HP:
+          <input {...register("HP", { required: true, minLength: 3 })} />
+          {errors.HP && "This field is required"}
+        </label>
+        <label className="labels">
+          Sp. Attack:
+          <input {...register("spAttack", { required: true, minLength: 3 })} />
+          {errors.spAttack && "This field is required"}
+        </label>
+        <label className="labels">
+          Sp. Defense:
+          <input {...register("spDefense", { required: true, minLength: 3 })} />
+          {errors.spDefense && "This field is required"}
         </label>
         <input
           type="submit"
