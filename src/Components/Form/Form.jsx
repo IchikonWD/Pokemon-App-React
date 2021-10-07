@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useDebounce } from "use-debounce";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 import { PokemonContext } from "../../Contexts/pokemonContext";
 
@@ -22,19 +22,15 @@ export default function Form() {
             const res = await axios.get(url);
             setPokemon([...pokemon, res.data]);
             setText("");
-            Swal.fire(
-              'Nice!',
-              `${debounced} was found!`,
-              'success'
-            )
-            console.log(`${debounced} was found!`);
+            Swal.fire("Nice!", `${res.data.name} was found!`, "warning");
+            console.log(`${res.data.name} was found!`);
           } else {
             setText("");
             Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Pokemon Already Saved!',
-            })
+              icon: "error",
+              title: "Oops...",
+              text: `Pokemon Already Saved!`,
+            });
             console.log("Pokemon Already Saved");
           }
         } catch (err) {
