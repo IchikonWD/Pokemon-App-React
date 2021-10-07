@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import Card from "../Card";
 import { PokemonContext } from "../../Contexts/pokemonContext";
-import { Link } from "react-router-dom";
 
 const Search = () => {
   const { pokemon } = useContext(PokemonContext);
+
+  const saveContext = () => {
+    localStorage.setItem("pokemonContext", JSON.stringify(pokemon));
+  };
 
   return (
     <div className="home">
@@ -22,10 +25,10 @@ const Search = () => {
       </div>
       {pokemon.length > 0 ? (
         <div className="text__bottom">
-          <span>Go back to home: &nbsp;</span>
-          <Link to="/">
-            <i className="fa fa-home icon"></i>
-          </Link>
+          <span>Save your pokemons for later &nbsp;</span>
+          <button onClick={saveContext}>
+            <i className="fa fa-save icon"></i>
+          </button>
         </div>
       ) : null}
     </div>
