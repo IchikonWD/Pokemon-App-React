@@ -1,7 +1,139 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+
+import { PokemonContext } from "../../Contexts/pokemonContext";
 
 const New = () => {
-    return <div>New</div>;
-}
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { pokemon, setPokemon } = useContext(PokemonContext);
+  const onSubmit = (data) => {
+    console.log(data);
+    const newData = {
+      abilities: [
+        {
+          ability: {
+            name: data.abilityOne,
+          },
+        },
+        {
+          ability: {
+            name: data.abilityTwo,
+          },
+        },
+      ],
+      id: data.id,
+      name: data.name,
+      sprites: {
+        front_default: data.image,
+      },
+      types: [
+        {
+          type: {
+            name: data.typeOne,
+          },
+        },
+        {
+          type: {
+            name: data.typeTwo,
+          },
+        },
+      ],
+    };
+    setPokemon([...pokemon, newData]);
+  };
+  return (
+    <section className="formContainer">
+      {/* Using handleSubmit will validate all inputs before submit them */}
+      <form className="addPokemon_form" onSubmit={handleSubmit(onSubmit)}>
+        {/* Add (or register) your input to the hook with "register" function to be validated on submit */}
+        <label className="labels">
+          ID:
+          <input {...register("id", { required: true, minLength: 4 })} />
+          {errors.id && "This field is required"}
+        </label>
+        <label className="labels">
+          Name:
+          <input {...register("name", { required: true, minLength: 3 })} />
+          {errors.name && "This field is required"}
+        </label>
+        <label className="labels">
+          Image:
+          <input {...register("image", { required: true, minLength: 3 })} />
+          {errors.image && "This field is required"}
+        </label>
+        <label className="labels">
+          Type one:
+          <select {...register("typeOne", { required: true })}>
+            <option value="normal">Normal</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="electric">Electric</option>
+            <option value="ice">Ice</option>
+            <option value="fighting">Fighting</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="flying">Flying</option>
+            <option value="psychic">Psychic</option>
+            <option value="bug">Bug</option>
+            <option value="rock">Rock</option>
+            <option value="ghost">Ghost</option>
+            <option value="dark">Dark</option>
+            <option value="dragon">Dragon</option>
+            <option value="steel">Steel</option>
+            <option value="fairy">Fairy</option>
+            {errors.typeOne && "This field is required"}
+          </select>
+        </label>
+        <label className="labels">
+          Type two:
+          <select {...register("typeTwo")}>
+            <option value="normal">Normal</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="electric">Electric</option>
+            <option value="ice">Ice</option>
+            <option value="fighting">Fighting</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="flying">Flying</option>
+            <option value="psychic">Psychic</option>
+            <option value="bug">Bug</option>
+            <option value="rock">Rock</option>
+            <option value="ghost">Ghost</option>
+            <option value="dark">Dark</option>
+            <option value="dragon">Dragon</option>
+            <option value="steel">Steel</option>
+            <option value="fairy">Fairy</option>
+          </select>
+        </label>
+        <label className="labels">
+          Ability one:
+          <input
+            {...register("abilityOne", { required: true, minLength: 3 })}
+          />
+          {errors.abilityOne && "This field is required"}
+        </label>
+        <label className="labels">
+          Ability two:
+          <input
+            {...register("abilityTwo", { required: true, minLength: 3 })}
+          />
+          {errors.abilityTwo && "This field is required"}
+        </label>
+        <input
+          type="submit"
+          value="Create Pokemon!"
+          className="addPokemon_btn"
+        />
+      </form>
+    </section>
+  );
+};
 
 export default New;
