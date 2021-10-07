@@ -1,7 +1,7 @@
-@import '../Utils/variables';
+@import "../Utils/variables";
 
 .search {
-  width: 80%;
+  width: 100%;
   position: relative;
   display: flex;
 }
@@ -15,6 +15,7 @@
   border-radius: 1rem 0 0 1rem;
   outline: none;
   color: #9dbfaf;
+  text-transform: capitalize;
 }
 
 .searchTerm:focus {
