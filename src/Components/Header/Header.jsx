@@ -39,6 +39,9 @@ const Header = () => {
         <Link to="/pokepc" onClick={toggleNav}>
         PokePC
         </Link>
+        <footer className="footer">
+      MIT &copy; {new Date().getFullYear()} Ezequiel Migueles Abraira
+    </footer>
       </div>
     </header>
   );

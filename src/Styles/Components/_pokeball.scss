@@ -24,7 +24,7 @@
   background-size: 350px 350px;
   background-position: 50px 200px;
   transition: all 0.5s ease-in 0.3s;
-  
+
   &::before {
     content: "";
     width: 100%;
@@ -58,6 +58,7 @@
     transition: top 1s;
     transition-delay: 0.3s;
     cursor: pointer;
+    animation: blink 0.5s infinite alternate;
     &:active {
       outline: 0;
       box-shadow: inset 0px 3px 0px 0px #bdbdbd,
@@ -69,7 +70,8 @@
     }
   }
   &__img {
-    width: 30%;
+    width: 40%;
+    margin-left: -3rem;
   }
 }
 
@@ -194,6 +196,7 @@
 
 .pokeball.open button {
   top: 10%;
+  animation: none;
   box-shadow: inset 0px -3px 0px 0px #bdbdbd,
     inset 0px -4px 0px 0px $pokeball-black, 0px 0px 0px 10px $pokeball-grey,
     0px 0px 0px 10px $pokeball-grey, 0px 0px 0px 24px $pokeball-black,
@@ -237,5 +240,14 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes blink {
+  from {
+    background: #f0f0f0;
+  }
+  to {
+    background: #ffe477;
   }
 }

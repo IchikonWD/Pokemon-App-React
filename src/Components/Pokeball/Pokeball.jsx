@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function Pokeball(props) {
   const [state, setState] = useState("");
   const [isShaking, setIsShaking] = useState("shaking");
+  const [isPokemonShaking, setIsPokemonShaking] = useState("");
   const [pokemonSpecies, setPokemonSpecies] = useState("");
   const [pokemonName, setPokemonName] = useState("");
   const [pokemonFlavour, setPokemonFlavour] = useState("");
@@ -38,17 +39,19 @@ export default function Pokeball(props) {
     e.preventDefault();
     state ? setState("") : setState("open");
     isShaking ? setIsShaking("") : setIsShaking("shaking");
+    isPokemonShaking ? setIsPokemonShaking("") : setIsPokemonShaking("shaking");
   };
 
   const theme = state;
   const themeShake = isShaking;
+  const themePokemonShake = isPokemonShaking;
 
   return pokemonName !== "" ? (
     <div id="pokeball-1" className={`pokeball ${theme} ${themeShake}`}>
       <button id="toggle-button" onClick={togglePokeball}></button>
       <article>
         <img
-          className="pokeball__img"
+          className={`pokeball__img ${themePokemonShake}`} 
           src={props.value.sprites.front_default}
           alt={props.value.name}
         />
