@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { PokemonContext } from "../../Contexts/pokemonContext";
 import Swal from "sweetalert2";
@@ -9,7 +9,10 @@ const New = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const { pokemon, setPokemon } = useContext(PokemonContext);
+  const [idCount, setIdCount] = useState(1119);
+
   const onSubmit = (data) => {
     console.log(data);
     const newData = {
@@ -25,10 +28,10 @@ const New = () => {
           },
         },
       ],
-      //TODO asignar contador para id automatica id: data.id,
+      id: idCount,
       name: data.name,
       sprites: {
-        front_default: data.image,
+        front_default: data.url,
       },
       types: [
         {
@@ -43,14 +46,13 @@ const New = () => {
         },
       ],
     };
+    setIdCount(idCount + 1);
     setPokemon([...pokemon, newData]);
     Swal.fire("Nice!", `${newData.name} was created!`, "success");
   };
   return (
     <section className="formContainer">
-      {/* Using handleSubmit will validate all inputs before submit them */}
       <form className="addPokemon_form" onSubmit={handleSubmit(onSubmit)}>
-        {/* Add (or register) your input to the hook with "register" function to be validated on submit */}
         <label className="labels">
           Name:
           <input {...register("name", { required: true, minLength: 3 })} />
@@ -88,6 +90,7 @@ const New = () => {
         <label className="labels">
           Second Type:
           <select {...register("typeTwo")}>
+            <option value=""></option>
             <option value="normal">Normal</option>
             <option value="fire">Fire</option>
             <option value="water">Water</option>
