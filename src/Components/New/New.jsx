@@ -23,18 +23,7 @@ const New = () => {
       });
     } else {
       const newData = {
-        abilities: [
-          {
-            ability: {
-              name: data.abilityOne,
-            },
-          },
-          {
-            ability: {
-              name: data.abilityTwo,
-            },
-          },
-        ],
+        height: data.height,
         id: idCount,
         name: data.name,
         sprites: {
@@ -52,6 +41,27 @@ const New = () => {
             },
           },
         ],
+        stats: [
+          {
+            base_stat: data.hp,
+          },
+          {
+            base_stat: data.attack,
+          },
+          {
+            base_stat: data.defense,
+          },
+          {
+            base_stat: data.specialAttack,
+          },
+          {
+            base_stat: data.specialDefense,
+          },
+          {
+            base_stat: data.speed,
+          },
+        ],
+        weight: data.weight,
       };
       setIdCount(idCount + 1);
       setPokemon([...pokemon, newData]);
