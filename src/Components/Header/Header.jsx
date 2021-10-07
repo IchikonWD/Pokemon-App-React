@@ -37,11 +37,8 @@ const Header = () => {
           Add Pokemon
         </Link>
         <Link to="/pokepc" onClick={toggleNav}>
-        PokePC
+          PokePC
         </Link>
-        <footer className="footer">
-      MIT &copy; {new Date().getFullYear()} Ezequiel Migueles Abraira
-    </footer>
       </div>
     </header>
   );

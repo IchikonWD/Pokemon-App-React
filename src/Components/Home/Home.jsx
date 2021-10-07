@@ -30,7 +30,7 @@ const Home = () => {
       {pokemon.length > 0 ? (
         <div className="text__bottom">
           <span>Take a look at all your Pokemons: &nbsp;</span>
-          <Link to="/search">
+          <Link to="/pokepc">
             <i className="fa fa-desktop icon"></i>
           </Link>
         </div>
