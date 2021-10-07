@@ -6,7 +6,7 @@ const Nav = () => {
     <div id="links">
       <Link to="/">Home</Link>
       <Link to="/new">Add Pokemon</Link>
-      <Link to="/search">Finder</Link>
+      <Link to="/search">PokePC</Link>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../Nav";
 import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo128.png";
+import logo from "../../assets/img/pokeball.png";
 
 const Header = () => {
   const [state, setState] = useState("");
@@ -15,7 +15,10 @@ const Header = () => {
       <nav>
         <div id="navbar">
           <div id="logo" className="reverse">
-            <img className='logo' src={logo} alt="PokeApp Logo" />
+            <Link to="/">
+              <img src={logo} alt="PokeApp logo" className="logo"></img>
+            </Link>
+
             <div className="mobile-btn" onClick={toggleNav}>
               &#9776;
             </div>
@@ -27,9 +30,15 @@ const Header = () => {
         <button className="closebtn" onClick={toggleNav}>
           &times;
         </button>
-        <Link to="/" onClick={toggleNav}>Home</Link>
-        <Link to="/new" onClick={toggleNav}>Add Pokemon</Link>
-        <Link to="/search" onClick={toggleNav}>Finder</Link>
+        <Link to="/" onClick={toggleNav}>
+          Home
+        </Link>
+        <Link to="/new" onClick={toggleNav}>
+          Add Pokemon
+        </Link>
+        <Link to="/search" onClick={toggleNav}>
+        PokePC
+        </Link>
       </div>
     </header>
   );
