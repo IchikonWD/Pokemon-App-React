@@ -15,41 +15,50 @@ const New = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const newData = {
-      abilities: [
-        {
-          ability: {
-            name: data.abilityOne,
+    if (data.typeOne === data.typeTwo) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You can't have the same type twice!",
+      });
+    } else {
+      const newData = {
+        abilities: [
+          {
+            ability: {
+              name: data.abilityOne,
+            },
           },
-        },
-        {
-          ability: {
-            name: data.abilityTwo,
+          {
+            ability: {
+              name: data.abilityTwo,
+            },
           },
+        ],
+        id: idCount,
+        name: data.name,
+        sprites: {
+          front_default: data.url,
         },
-      ],
-      id: idCount,
-      name: data.name,
-      sprites: {
-        front_default: data.url,
-      },
-      types: [
-        {
-          type: {
-            name: data.typeOne,
+        types: [
+          {
+            type: {
+              name: data.typeOne,
+            },
           },
-        },
-        {
-          type: {
-            name: data.typeTwo,
+          {
+            type: {
+              name: data.typeTwo,
+            },
           },
-        },
-      ],
-    };
-    setIdCount(idCount + 1);
-    setPokemon([...pokemon, newData]);
-    Swal.fire("Nice!", `${newData.name} was created!`, "success");
+        ],
+      };
+      setIdCount(idCount + 1);
+      setPokemon([...pokemon, newData]);
+      Swal.fire("Nice!", `${newData.name} was created!`, "success");
+    }
   };
+
   return (
     <section className="formContainer">
       <form className="addPokemon_form" onSubmit={handleSubmit(onSubmit)}>
